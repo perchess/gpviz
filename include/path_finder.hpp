@@ -30,14 +30,14 @@ public:
                       Vertex start,
                       int display_dt = 30,
                       size_t cell_size = 20)
-    : window_(sf::VideoMode(int_grid.size() * cell_size, int_grid[0].size() * cell_size), window_name),
+    : window_(sf::VideoMode(int_grid[0].size() * cell_size, int_grid.size() * cell_size), window_name),
       start_(start),
       goal_(goal),
       display_dt_(display_dt),
       window_name_(window_name),
-      grid_shape_(std::make_pair(int_grid.size(), int_grid[0].size()))
+      grid_shape_(std::make_pair(int_grid[0].size(), int_grid.size()))
   {
-    init(int_grid);
+    init(int_grid, cell_size);
   }
 
   void init(std::vector<std::vector<int>> int_grid, size_t cell_size = 20);

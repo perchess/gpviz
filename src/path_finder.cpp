@@ -4,13 +4,13 @@
 void PathFinder::init(std::vector<std::vector<int>> int_grid, size_t cell_size)
 {
   std::vector<sf::RectangleShape> grid;
-  for (size_t x = 0; x < int_grid.size(); ++x)
+  for (size_t x = 0; x < int_grid[0].size(); ++x)
   {
-    for (size_t y = 0; y < int_grid[0].size(); ++y)
+    for (size_t y = 0; y < int_grid.size(); ++y)
     {
       sf::RectangleShape cell(sf::Vector2f(cell_size, cell_size));
       cell.setPosition(x * cell_size, y * cell_size);
-      sf::Color random_color = int_grid[x][y] == 1 ? sf::Color::Black : sf::Color::White;
+      sf::Color random_color = int_grid[y][x] == 1 ? sf::Color::Black : sf::Color::White;
       cell.setFillColor(random_color);
       cell.setOutlineThickness(1);
       cell.setOutlineColor(sf::Color::Black);
@@ -52,14 +52,13 @@ void PathFinder::visualize(const Vertex& start, const Vertex& goal, const std::v
 std::vector<Vertex> PathFinder::getNeighbors(const Vertex& node)
 {
   std::vector<Vertex> neighbors;
-  int grid_size = grid_shape_.first;
   for (const auto& dir : directions_)
   {
     int nx = node.x + dir.first;
     int ny = node.y + dir.second;
-    if (nx >= 0 && ny >= 0 && nx < grid_size && ny < grid_size)
+    if (nx >= 0 && ny >= 0 && nx < grid_shape_.first && ny < grid_shape_.second)
     {
-      auto& color = grid_[nx * grid_size + ny].getFillColor();
+      auto& color = grid_[nx * grid_shape_.first + ny].getFillColor();
       uint weight = color == sf::Color::Black ? 255 : 1;
       neighbors.push_back({ nx, ny, weight });
     }
