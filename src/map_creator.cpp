@@ -1,4 +1,5 @@
 #include "map_creator.hpp"
+#include <iostream>
 
 void MapCreator::run()
 {

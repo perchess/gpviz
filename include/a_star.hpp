@@ -2,7 +2,7 @@
 #include <queue>
 #include <unordered_map>
 
-class Dijkstra : public PathFinder
+class AStar : public PathFinder
 {
 public:
   using PathFinder::PathFinder; // Inherit constructors from Base

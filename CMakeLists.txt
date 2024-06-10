@@ -13,15 +13,14 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 include_directories(include)
 
 # Add the executable
-add_executable(PathfindingVisualization src/graph_interactive.cpp)
 add_library(MapCreator src/map_creator.cpp)
 add_executable(Pathfinding 
 src/path_finder.cpp
 src/dijkstra.cpp
+src/a_star.cpp
 src/main.cpp
 )
 
 # Link the SFML libraries
-target_link_libraries(PathfindingVisualization sfml-graphics sfml-window sfml-system)
 target_link_libraries(Pathfinding sfml-graphics sfml-window sfml-system MapCreator)
 target_link_libraries(MapCreator sfml-graphics sfml-window sfml-system)

@@ -2,8 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <chrono>
 #include <cmath>
-#include <queue>
-#include <unordered_map>
 #include <vector>
 
 struct Vertex
@@ -25,7 +23,7 @@ class PathFinder
 {
 public:
   explicit PathFinder(std::string window_name,
-                      std::vector<std::vector<int>> int_grid,
+                      const std::vector<std::vector<int>>& int_grid,
                       Vertex goal,
                       Vertex start,
                       int display_dt = 30,
@@ -42,16 +40,13 @@ public:
 
   void init(std::vector<std::vector<int>> int_grid, size_t cell_size = 20);
   void visualize(const Vertex& start, const Vertex& goal, const std::vector<Vertex>& visited = {});
-  virtual std::vector<Vertex> findPath(Vertex start,
-                                       Vertex goal,
-                                       sf::RenderWindow& window,
-                                       std::vector<sf::RectangleShape>& grid) = 0;
+  virtual std::vector<Vertex> findPath(Vertex start, Vertex goal, std::vector<Vertex>& visited) = 0;
   void render();
   void setDirections(const std::vector<std::pair<int, int>>& dirs) { directions_ = dirs; }
 
 protected:
   std::vector<Vertex> getNeighbors(const Vertex& node);
-  void visualizeStep(const Vertex& visited, const Vertex& start, const Vertex& goal);
+  void replay(std::vector<Vertex>& visited);
 
   sf::RenderWindow window_;
   std::vector<sf::RectangleShape> grid_;

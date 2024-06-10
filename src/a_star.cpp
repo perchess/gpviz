@@ -1,6 +1,6 @@
-#include "dijkstra.hpp"
+#include "a_star.hpp"
 
-std::vector<Vertex> Dijkstra::reconstructPath(std::unordered_map<int, Vertex>& came_from, Vertex& start, const Vertex& goal)
+std::vector<Vertex> AStar::reconstructPath(std::unordered_map<int, Vertex>& came_from, Vertex& start, const Vertex& goal)
 {
   std::vector<Vertex> path;
   Vertex current = goal;
@@ -14,8 +14,10 @@ std::vector<Vertex> Dijkstra::reconstructPath(std::unordered_map<int, Vertex>& c
   return path;
 }
 
-std::vector<Vertex> Dijkstra::findPath(Vertex start, Vertex goal, std::vector<Vertex>& visited)
+std::vector<Vertex> AStar::findPath(Vertex start, Vertex goal, std::vector<Vertex>& visited)
 {
+  auto heuristic = [](const Vertex& node, const Vertex& goal) { return sqrt(pow(node.x - goal.x, 2) + pow(node.y - goal.y, 2)); };
+
   std::priority_queue<Vertex, std::vector<Vertex>, Compare> pq;
   std::unordered_map<int, Vertex> came_from;
   std::unordered_map<int, int> cost;
@@ -38,7 +40,7 @@ std::vector<Vertex> Dijkstra::findPath(Vertex start, Vertex goal, std::vector<Ve
       if (cost.find(next.y * grid_shape_.first + next.x) == cost.end() || new_cost < cost[next.y * grid_shape_.first + next.x])
       {
         cost[next.y * grid_shape_.first + next.x] = new_cost;
-        next.weight = new_cost;
+        next.weight = new_cost + heuristic(next, goal);
         pq.push(next);
         came_from[next.y * grid_shape_.first + next.x] = current;
       }
