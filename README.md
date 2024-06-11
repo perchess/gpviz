@@ -22,16 +22,16 @@ The Grid Pathfinding Visualizer is a powerful and flexible tool designed to visu
 
 To get started with the Pathfinding Visualization Framework, follow these steps:
 
-1. **Clone the Repository**:
+1. **Install Dependencies**:
+    ```bash
+    sudo apt update
+    sudo apt install -y git build-essential cmake libsfml-dev
+    ```
+    
+2. **Clone the Repository**:
     ```bash
     git clone https://github.com/perchess/gpviz
     cd gpviz
-    ```
-
-2. **Install Dependencies**:
-    ```bash
-    sudo apt update
-    sudo apt install 
     ```
 
 3. **Build package**
