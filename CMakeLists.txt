@@ -16,8 +16,8 @@ include_directories(include)
 add_library(MapCreator src/map_creator.cpp)
 add_executable(Pathfinding 
 src/path_finder.cpp
-src/dijkstra.cpp
-src/a_star.cpp
+src/algorithms/dijkstra.cpp
+src/algorithms/a_star.cpp
 src/main.cpp
 )
 

@@ -24,26 +24,25 @@ To get started with the Pathfinding Visualization Framework, follow these steps:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/perchess/pathfinding-visualization-framework.git
-    cd pathfinding-visualization-framework
+    git clone https://github.com/perchess/gpviz
+    cd gpviz
     ```
 
 2. **Install Dependencies**:
     ```bash
-    # For Python-based projects
-    pip install -r requirements.txt
-
-    # For Node.js-based projects
-    npm install
+    sudo apt update
+    sudo apt install 
     ```
 
-3. **Run the Application**:
-    ```bash
-    # For Python-based projects
-    python main.py
+3. **Build package**
+   ```bash
+   mkdir build && cd build
+   cmake .. && make
+   ```
 
-    # For Node.js-based projects
-    npm start
+4. **Run the Application**:
+    ```bash
+    ./Pathfinding
     ```
 
 ## Usage
@@ -52,16 +51,16 @@ To get started with the Pathfinding Visualization Framework, follow these steps:
     - After installation, run the application to launch the visualization framework.
 
 2. **Creating the Grid**:
-    - Use the interactive interface to create a grid layout. Add start and end points, and place obstacles as needed.
+    - Use the interactive interface to create a grid layout. Add start and end points, and place obstacles as needed (mouse left button).
 
 3. **Selecting an Algorithm**:
-    - Choose a pathfinding algorithm from the list of supported algorithms.
+    - Choose a pathfinding algorithm from the list of supported algorithms (main.cpp).
 
 4. **Running the Visualization**:
-    - Start the visualization to see the algorithm in action. Use the step-by-step controls to pause, resume, or step through the algorithm's execution.
+    - Start the visualization by closing the window with map creation.
 
 5. **Analyzing the Results**:
-    - Observe the path found by the algorithm, and review performance metrics displayed on the screen.
+    - Observe the path found by the algorithm, and review performance metrics displayed on the screen (stdout).
 
 ## Algorithms Supported
 
@@ -72,40 +71,11 @@ To get started with the Pathfinding Visualization Framework, follow these steps:
 
 The framework is designed to be easily extendable. You can add new algorithms or customize existing ones by modifying the relevant files in the `algorithms` directory.
 
+You need to implement a child class from the PathFinder class. You could use Dijkstra or A\* as examples.
+
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
-1. **Fork the Repository**:
-    - Click the "Fork" button at the top right of this repository page.
-
-2. **Clone Your Fork**:
-    ```bash
-    git clone https://github.com/yourusername/pathfinding-visualization-framework.git
-    cd pathfinding-visualization-framework
-    ```
-
-3. **Create a Branch**:
-    ```bash
-    git checkout -b feature/your-feature-name
-    ```
-
-4. **Make Your Changes**:
-    - Implement your feature or fix a bug.
-
-5. **Commit Your Changes**:
-    ```bash
-    git add .
-    git commit -m "Add your commit message here"
-    ```
-
-6. **Push to Your Fork**:
-    ```bash
-    git push origin feature/your-feature-name
-    ```
-
-7. **Create a Pull Request**:
-    - Go to the original repository on GitHub and create a pull request from your fork.
+Contributions are welcome!
 
 ## License
 

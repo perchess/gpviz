@@ -1,5 +1,5 @@
-#include "a_star.hpp"
-#include "dijkstra.hpp"
+#include "algorithms/a_star.hpp"
+#include "algorithms/dijkstra.hpp"
 #include "map_creator.hpp"
 
 int main()

@@ -1,4 +1,4 @@
-#include "dijkstra.hpp"
+#include "algorithms/dijkstra.hpp"
 
 std::vector<Vertex> Dijkstra::reconstructPath(std::unordered_map<int, Vertex>& came_from, Vertex& start, const Vertex& goal)
 {

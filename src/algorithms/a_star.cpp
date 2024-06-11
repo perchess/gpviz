@@ -1,4 +1,4 @@
-#include "a_star.hpp"
+#include "algorithms/a_star.hpp"
 
 std::vector<Vertex> AStar::reconstructPath(std::unordered_map<int, Vertex>& came_from, Vertex& start, const Vertex& goal)
 {
