@@ -35,16 +35,18 @@ public:
       window_name_(window_name),
       grid_shape_(std::make_pair(int_grid[0].size(), int_grid.size()))
   {
-    init(int_grid, cell_size);
+    createGrid(int_grid, cell_size);
+    // clearWindow();
   }
 
-  void init(std::vector<std::vector<int>> int_grid, size_t cell_size = 20);
   void visualize(const Vertex& start, const Vertex& goal, const std::vector<Vertex>& visited = {});
   virtual std::vector<Vertex> findPath(Vertex start, Vertex goal, std::vector<Vertex>& visited) = 0;
   void render();
   void setDirections(const std::vector<std::pair<int, int>>& dirs) { directions_ = dirs; }
 
 protected:
+  void createGrid(std::vector<std::vector<int>> int_grid, size_t cell_size = 20);
+  void clearWindow();
   std::vector<Vertex> getNeighbors(const Vertex& node);
   void replay(std::vector<Vertex>& visited);
 

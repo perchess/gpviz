@@ -1,6 +1,7 @@
 #include "path_finder.hpp"
+#include <iostream>
 
-void PathFinder::init(std::vector<std::vector<int>> int_grid, size_t cell_size)
+void PathFinder::createGrid(std::vector<std::vector<int>> int_grid, size_t cell_size)
 {
   std::vector<sf::RectangleShape> grid;
   for (size_t y = 0; y < int_grid.size(); ++y)
@@ -91,11 +92,26 @@ void PathFinder::render()
       }
     }
     std::vector<Vertex> visited;
+    auto start = std::chrono::high_resolution_clock::now();
     path_ = findPath(start_, goal_, visited);
+    duration_ = std::chrono::high_resolution_clock::now() - start;
     replay(visited);
     visualize(start_, goal_);
     sf::sleep(sf::seconds(2));
 
     window_.close();
   }
+  // Print the duration
+  std::cout << "Path finding execution time: " << duration_.count() << " milliseconds" << std::endl;
+}
+
+void PathFinder::clearWindow()
+{
+  // window_.clear();
+  for (auto& cell : grid_)
+  {
+    // cell.setFillColor(sf::Color::White);
+    window_.draw(cell);
+  }
+  // window_.display();
 }

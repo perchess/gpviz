@@ -17,7 +17,7 @@ int main()
   // Create a map
   unsigned int height = 50;   // Height of the grid
   unsigned int width = 50;    // Width of the grid
-  unsigned int cellSize = 20; // Size of each cell in pixels
+  unsigned int cellSize = 10; // Size of each cell in pixels
 
   MapCreator gridMap(height, width, cellSize);
   gridMap.run();
